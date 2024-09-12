@@ -18,8 +18,9 @@ code {
  grid-template-rows: 60px 1fr 104px;
 }
 
-.favButton{
+.card button{
   background-color: rgba(136, 136, 136, 0.116);
+  margin-bottom: 10px;
   padding: 10px;
   border: none;
   width: 100%;
@@ -129,8 +130,5 @@ tr:nth-child(even) {
 
 .dark{
   background-color: #12121296;
-  color: white;
-}
-.dark > a {
-  color: white;
+  color: burlywood;
 }

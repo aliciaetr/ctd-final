@@ -2,22 +2,22 @@ import { useState } from "react";
 
 const Form = () => {
   //Aqui deberan implementar el form completo con sus validaciones
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState('');
+  const [fullName, setFullName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState('')
 
-  const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/
   
   const handleSubmit = (e) => {
     e.preventDefault();
     if (fullName.length <= 5 || !emailRegex.test(email)) {
-      setMessage('Por favor verifique su información nuevamente');
+      setMessage('Por favor verifique su información nuevamente')
       return;
     }
 
-    setMessage(`Gracias ${fullName}, te contactaremos cuanto antes vía mail`);
-    console.log('Nombre:', fullName);
-    console.log('Email:', email);
+    setMessage(`Gracias ${fullName}, te contactaremos cuanto antes vía mail`)
+    console.log('Nombre:', fullName)
+    console.log('Email:', email)
   };
 
   return (

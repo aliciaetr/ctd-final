@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useGlobalState } from './utils/global.context';
-import { useState } from 'react';
 
-const Card = ({ user, showButton = true }) => {
+const Card = ({ user }) => {
   const { name, username, id } = user
-
-  const { dispatch } = useGlobalState()
+  const { state, dispatch } = useGlobalState()
+  const isFav = state.favorites.some(fav => fav.id === id);
 
   const addFav = () => {
-    dispatch({ type: "ADD_FAV", payload: user })
-  }
+    dispatch({ type: isFav ? "REMOVE_FAV" : "ADD_FAV", payload: user });
+  };
 
   return (
     <div className="card">
@@ -18,11 +17,7 @@ const Card = ({ user, showButton = true }) => {
         <p>{name}</p>
       </Link>
       <p>{username}</p>
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        {showButton && (
-        <button onClick={addFav} className="favButton">
-          Add fav ⭐
-        </button>)}
+      <button onClick={addFav}>{isFav ? "Remove fav ❌" : "Add fav ⭐"}</button>
     </div>
   );
 };

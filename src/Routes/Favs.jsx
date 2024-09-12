@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Card from "../Components/Card";
 import { useGlobalState } from "../Components/utils/global.context";
 
@@ -6,23 +5,13 @@ import { useGlobalState } from "../Components/utils/global.context";
 
 const Favs = () => {
   const {state} = useGlobalState()
-  const [favorites, setFavorites] = useState([])
-
-  useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []
-    const uniqueFavorites = Array.from(new Set(storedFavorites.map(user => user.id)))
-    .map(id => {
-      return storedFavorites.find(user => user.id === id)
-    });
-    setFavorites(uniqueFavorites)
-  }, [])
 
   return (
     <div>
     <h1>Dentists Favs</h1>
       <div className="card-grid">
-      {favorites.map((user) => (
-          <Card key={user.id} user={user} showButton={false} />
+      {state.favorites.map((user) => (
+          <Card key={user.id} user={user} />
         ))}
       </div>
     </div>
